@@ -1,0 +1,15 @@
+.search {
+    width: 20vw;
+    padding: 10px 15px;
+    border-radius: 100px;
+    color: rgba(34, 27, 27, 0.467);
+    background-color: #aa9f9f42;
+    border: none;
+    margin: 25px 25px;
+    transition: width 1.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.search:hover {
+    width: 30vw;
+    transform: width;
+}
