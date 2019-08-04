@@ -15,7 +15,7 @@ class App extends Component {
     this.handleSearch = this.handleSearch.bind(this)
   }
   componentDidMount(){
-    fetch ("https://jsonplaceholder.typicode.com/users")
+    fetch ("httLOps://jsonplaceholder.typicode.com/users")
     .then(response =>response.json())
     .then(user => this.setState({ monsters: user}))
   }
@@ -27,6 +27,8 @@ class App extends Component {
   }
 
    render() {
+     const {monsters, searchField} = this.state ;
+     const filtered = monsters.filter(monster => monster.name.toLowerCase().includes(searchField.toLowerCase()))
      return (
        <div className="App">
          <input type="search"  placeholder="search monsters"  onChange={e => {
@@ -34,9 +36,9 @@ class App extends Component {
          
           }
            } />
-         <CardList monsters={this.state.monsters}  >
+         <CardList monsters={filtered}  >
        
-         {this.state.monsters.map(monster => { return <h1 key={monster.id}>  {monster.name}   </h1>})}
+         {/* {this.state.monsters.map(monster => { return <h1 key={monster.id}>  {monster.name}   </h1>})} */}
          </CardList>
         
        </div> 
