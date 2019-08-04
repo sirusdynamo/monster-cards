@@ -9,31 +9,31 @@ class App extends Component {
   constructor(){
     super()
     this.state = {
-     monsters: [
-       {
-         name: "Loading",
-         id: "1"
-       },  
-       {
-        name: "Dracula vv",
-        id:"2"
-      },
-      {
-        name: "Zombie",
-        id: "3"
-      }
-     ]
-    }
+     monsters: [],
+     searchField:""
+    } 
+    this.handleSearch = this.handleSearch.bind(this)
   }
   componentDidMount(){
     fetch ("https://jsonplaceholder.typicode.com/users")
     .then(response =>response.json())
     .then(user => this.setState({ monsters: user}))
   }
+  handleSearch(event){
+    this.setState({
+      
+      searchField:event.target.value
+    })
+  }
 
    render() {
      return (
        <div className="App">
+         <input type="search"  placeholder="search monsters"  onChange={e => {
+           this.setState({searchField:e.target.value})
+         
+          }
+           } />
          <CardList monsters={this.state.monsters}  >
        
          {this.state.monsters.map(monster => { return <h1 key={monster.id}>  {monster.name}   </h1>})}
